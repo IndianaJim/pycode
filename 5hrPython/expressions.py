@@ -1,3 +1,5 @@
+import random
+
 a = 5 > 4
 b = 'John' != 'john'
 print(a)
@@ -32,10 +34,43 @@ elif is_raining:
     school is open.
     """)
 else:
-     print(f"""
+    print(f"""
     Hi {student_name.title()},
     Since it is not snowing today,
     school is open.
     """)
+
+person1 = "Allen"
+person2 = "Michael"
+person3 = "John"
+person4 = "Ben"
+
+people = ["Allen", "Michael","John", "Ben"]
+print(people)
+print(people[0])
+print(people[len(people) - 1])
+print(people[-1])
+print(people[1:3]) # pulls 1 and 2, ignores 3
+print(people[1:]) # pulls from 1 forward
+print(people[:2]) # pulls first 2 only
+# people.append("Jim")
+# people.remove("Allen") 
+# people.pop(0) #remove item 0
+# people.sort() # default is alphanumeric
+
+print(people)
+myRandNum = random.randint(0,(len(people) - 1))
+print(myRandNum)
+#people.append("Jim")
+print(people)
+print(f"{people[myRandNum]} will be removed.")
+people.pop(myRandNum)
+print(people)
+
+
+
+
+
+
 
 
