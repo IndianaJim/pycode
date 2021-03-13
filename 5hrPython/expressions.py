@@ -11,13 +11,31 @@ else:
 print("good luck in the next exam")
 
 student_name = "john michael"
-is_snowing = True
+is_snowing = False
+is_raining = True
+is_badweather = is_snowing or is_raining
+# and
+# or
+# not
+print(is_badweather)
 
 if is_snowing:
-    print(f"Hi {student_name},\nSince it is snowing today,\nschool is cancelled.")
+    print(f"""
+    Hi {student_name.title()},
+    Since it is snowing today,
+    school is cancelled.
+    """)
+elif is_raining:
+    print(f"""
+    Hi {student_name.title()},
+    Since it is only raining today,
+    school is open.
+    """)
 else:
-    print(f"Hi {student_name},\nSince it is not snowing today,\nschool will be open.")
-
-
+     print(f"""
+    Hi {student_name.title()},
+    Since it is not snowing today,
+    school is open.
+    """)
 
 
