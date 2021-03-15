@@ -59,12 +59,16 @@ print(people[:2]) # pulls first 2 only
 # people.sort() # default is alphanumeric
 
 print(people)
-myRandNum = random.randint(0,(len(people) - 1))
-print(myRandNum)
+#myRandNum = random.randint(0,(len(people) - 1))
+#print(myRandNum)
+chosenperson = random.choice(people)
+print(f"chosen: {chosenperson}")
 #people.append("Jim")
 print(people)
-print(f"{people[myRandNum]} will be removed.")
-people.pop(myRandNum)
+#print(f"{people[myRandNum]} will be removed.")
+#people.pop(myRandNum)
+people.remove(chosenperson)
+
 print(people)
 
 
