@@ -68,13 +68,4 @@ print(people)
 #print(f"{people[myRandNum]} will be removed.")
 #people.pop(myRandNum)
 people.remove(chosenperson)
-
 print(people)
-
-
-
-
-
-
-
-
