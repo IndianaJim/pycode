@@ -20,5 +20,12 @@ print(friend)
 print(friend["name"])
 print(friend.get("name"))
 
+print(range(100))
+numbers = list(range(5,20,2))[3]
+print(numbers)
+
+
+
+
 
 
