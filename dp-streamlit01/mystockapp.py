@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 
 st.write ("""
-# Simple Stock Proce App
+# Simple Stock Price App
 
 Shown are the stock closing price and volume of AAPL
 
