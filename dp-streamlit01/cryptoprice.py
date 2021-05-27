@@ -10,4 +10,9 @@ import requests
 import json
 import time
 
+# Page layout - page expands to full width
+st.set_page_config(layout="wide")
+# Title
+image = Image.open('bitcoinlogo1.png')
+st.image(image, width=500)
 
