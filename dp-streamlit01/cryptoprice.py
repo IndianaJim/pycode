@@ -25,3 +25,12 @@ col2, col3 = st.beta_columns((2,1))
 #sidebar + main panel
 col1.header('imput options')
 
+#sidebar - crypto price unit
+currency_price_unit = col1.selectbox('Select currency for price',('USD','BTC','ETH'))
+
+#web scraping coinmarket data
+@st.cache
+def load_data():
+    cmc = requests.get('https://coinmarketcap.com')
+    soup = BeautifulSoup(cmc,content,'html.paser')
+    
