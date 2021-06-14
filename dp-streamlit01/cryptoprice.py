@@ -65,10 +65,10 @@ def load_data():
     df['coin_symbol'] = coin_symbol
     df['price'] = price
     df['percent_change_1h'] = percent_change_1h
-    #df['percent_change_24h'] = percent_change_24h
-    #df['percent_change_7d'] = percent_change_7d
-    #df['market_cap'] = market_cap
-    #df['volume_24h'] = volume_24h
+    df['percent_change_24h'] = percent_change_24h
+    df['percent_change_7d'] = percent_change_7d
+    df['market_cap'] = market_cap
+    df['volume_24h'] = volume_24h
     return df
 
 df = load_data()
