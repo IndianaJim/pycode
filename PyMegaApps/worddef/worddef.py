@@ -9,6 +9,10 @@ def translate(w):
     nummatches = len(get_close_matches(w,data.keys()))
     if w in data:
         return data[w]
+    elif w.title() in data:
+        return data[w.title()]
+    elif w.upper() in data:
+        return data[w.upper()]
     elif nummatches > 0:
         matchcounter = 0
         while matchcounter < nummatches:
