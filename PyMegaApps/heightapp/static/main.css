@@ -32,8 +32,9 @@ html, body {
 }
 
 .container button {
-    width:70px;
-    height: 30px;
+    font-size: 20px;
+    width:100px;
+    height: 40px;
     background-color: steelblue;
     margin: 4px;
 }
