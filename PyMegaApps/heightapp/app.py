@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request
+from Flask.ext.sqlalchemy import sqlalchemy
 
 app=Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:postgres@localhost/height_collector'
+db=sqlalchemy.app
+
 
 @app.route('/')
 def index():
@@ -11,7 +15,7 @@ def success():
     if request.method=='POST':
         email=request.form['email_name']
         height=request.form['height_name']
-        print(email, height)
+        #print(email, height)
         return render_template('success.html')
 
 if __name__ == '__main__':
