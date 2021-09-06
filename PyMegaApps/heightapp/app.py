@@ -3,7 +3,12 @@ from Flask.ext.sqlalchemy import sqlalchemy
 
 app=Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:postgres@localhost/height_collector'
-db=sqlalchemy.app
+db=SQLAlchemy(app)
+
+class Data(db.Model):
+    __tablename__="data"
+    id=db.Column(db.Integer,primary_key=True)
+    
 
 
 @app.route('/')
