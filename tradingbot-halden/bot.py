@@ -10,8 +10,10 @@ def get_crypto_data(pair, since):
 def get_balance():
     return api.query_private('Balance') #remove if no balance yet...  ['result']
 
-def get_traddes_history():
-    return 0
+def get_trades_history():
+    start_date = datetime.datetime(2021,7,4)
+    end_date = datetime.datetime.today()
+    return api.query_private
 
 def date_nix(str_date):
     return calendar.timegm(str_date.timetuple())
