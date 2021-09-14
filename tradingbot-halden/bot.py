@@ -13,6 +13,19 @@ def get_balance():
 def get_traddes_history():
     return 0
 
+def date_nix(str_date):
+    return calendar.timegm(str_date.timetuple())
+
+def req(start, end, ofs):
+    req_data = {
+        'type':'all',
+        'trades':'true',
+        'start':str(date_nix(start)),
+        'end':str(date_nix(end)),
+        'ofs':str(ofs) 
+    }
+    return req_data
+
 if __name__ == '__main__':
     api = krakenex.API()
     api.load_key('d:\\py\\apikeys\\kraken.key')
