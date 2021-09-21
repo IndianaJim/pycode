@@ -14,6 +14,10 @@ def get_fake_balance():
     with open('balance.json','r') as f:
         return json.load(f)
 
+def get_fake_trades_history():
+    with open('tradeshistory.json', 'r') as f:
+        return json.load(f)
+
 def get_trades_history():
     start_date = datetime.datetime(2021,7,4)
     end_date = datetime.datetime.today()
@@ -38,7 +42,6 @@ if __name__ == '__main__':
     pair='XETHZUSD'
     since=str(int(time.time() - 3600))
     #print(json.dumps(get_crypto_data(pair, since), indent=4))
-    #print(json.dumps(get_trades_history(), indent=4))
-    print(json.dumps(get_fake_balance(), indent=4))
+    print(json.dumps(get_fake_trades_history(), indent=4))
 
 
