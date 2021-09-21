@@ -13,7 +13,7 @@ def get_balance():
 def get_trades_history():
     start_date = datetime.datetime(2021,7,4)
     end_date = datetime.datetime.today()
-    return api.query_private('TradesHistory',req(start_date,end_date,1))
+    return api.query_private('TradesHistory',req(start_date,end_date,1))['result']['trades']
 
 def date_nix(str_date):
     return calendar.timegm(str_date.timetuple())
