@@ -13,7 +13,7 @@ def get_balance():
 def get_trades_history():
     start_date = datetime.datetime(2021,7,4)
     end_date = datetime.datetime.today()
-    return api.query_private
+    return api.query_private('TradesHistory',req(start_date,end_date,1))
 
 def date_nix(str_date):
     return calendar.timegm(str_date.timetuple())
@@ -34,7 +34,7 @@ if __name__ == '__main__':
     pair='XETHZUSD'
     since=str(int(time.time() - 3600))
     #print(json.dumps(get_crypto_data(pair, since), indent=4))
-    print(json.dumps(get_balance(), indent=4))
+    print(json.dumps(get_trades_history(), indent=4))
 
 
 
