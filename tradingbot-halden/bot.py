@@ -34,11 +34,11 @@ def analyze(pair,since):
             if open_ >= selling_point_win or close_ >= selling_point_win:
                 #sell at a profit
                 did_sell = True
-                pass
+                fake_sell(pair[0]+pair[1], close_, last_trade)
             elif open_ <= selling_point_loss or close_ <= selling_point_loss:
                 #sell at aloss
                 did_sell = True
-                pass
+                fake_sell(pair[0]+pair[1], close_, last_trade)
 
             #logic for if we should buy
             if not did_sell and float(balance['USD.HOLD']) > 0:
@@ -47,10 +47,25 @@ def analyze(pair,since):
                 if high_ > highest:
                     highest = high_
 
-                    
+            price_to_buy = 1.0005
 
-        except:
-            pass
+            if highest/lowest >= price_to_buy and low_ <= lowest:
+                available_money = balance['USD.HOLD']
+                # buy method
+                fake_buy(pair[0]+pair[1], available_money, close_, last_trade)
+
+def fake_buy(pair, dollar_amount, close_, last_trade):
+    trades_history = get_fake_trades_history()
+    last_trade['price'] = str(close_)
+    last_trade['type'] = 'buy'
+    last_trade['cost'] = dollar_amount
+    last_trade['time'] = datetime.datetime.now().timestamp()
+    last_trade['vol'] = str(float(dollar_amount)/close_)
+    
+def fake_sell(pair, close_, last_trade):
+    trades_history = {}
+
+
 
 def get_fake_balance():
     with open('balance.json','r') as f:
