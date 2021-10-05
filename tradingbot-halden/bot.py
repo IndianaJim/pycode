@@ -54,6 +54,11 @@ def analyze(pair,since):
                 # buy method
                 fake_buy(pair[0]+pair[1], available_money, close_, last_trade)
 
+def fake_update_balance(pair, dollar_amount, close_, was_sold):
+    balance = get_fake_balance()
+    prev_balance = float(balance['USD.HOLD'])
+    new_balance = 0
+
 def fake_buy(pair, dollar_amount, close_, last_trade):
     trades_history = get_fake_trades_history()
     last_trade['price'] = str(close_)
@@ -62,6 +67,10 @@ def fake_buy(pair, dollar_amount, close_, last_trade):
     last_trade['time'] = datetime.datetime.now().timestamp()
     last_trade['vol'] = str(float(dollar_amount)/close_)
     
+    trades_history['result']['trades'][str(datetime.datetime.now().timestamp())] = last_trade
+    with open('tradeshistory.json','w') as f:
+        json.dump(trades_history, f, indent = 4)
+
 def fake_sell(pair, close_, last_trade):
     trades_history = {}
 
@@ -81,7 +90,7 @@ def get_trades_history():
     return api.query_private('TradesHistory',req(start_date,end_date,1))['result']['trades']
 
 def get_last_trade(pair):
-    trades_history = get_fake_trades_history()
+    trades_history = get_fake_trades_history()['result']['trades']
     last_trade = {}
     for trade in trades_history:
         trade = trades_history[trade]
