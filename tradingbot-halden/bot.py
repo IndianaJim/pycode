@@ -58,6 +58,16 @@ def fake_update_balance(pair, dollar_amount, close_, was_sold):
     balance = get_fake_balance()
     prev_balance = float(balance['USD.HOLD'])
     new_balance = 0
+    if was_sold:
+        new_balance = prev_balance + float(dollar_amount)  
+        del balance[pair]
+    else:
+        new_balance = prev_balance - float(dollar_amount)
+        balance[pair] = str(float(dollar_amount)/close_)
+    balance['USD.HOLD'] = str(new_balance)
+
+    with open('balance.json', 'w' as f:
+        json.dump(balance, f, indent=4)
 
 def fake_buy(pair, dollar_amount, close_, last_trade):
     trades_history = get_fake_trades_history()
@@ -70,9 +80,19 @@ def fake_buy(pair, dollar_amount, close_, last_trade):
     trades_history['result']['trades'][str(datetime.datetime.now().timestamp())] = last_trade
     with open('tradeshistory.json','w') as f:
         json.dump(trades_history, f, indent = 4)
+        fake_update_balance(pair, dollar_amount, close_, False)
 
 def fake_sell(pair, close_, last_trade):
-    trades_history = {}
+    trades_history = get_fake_trades_history()
+    last_trade['price'] = str(close_)
+    last_trade['type'] = 'sell'
+    last_trade['cost'] = str(float(last_trade['vol'])*close_)
+    last_trade['time'] = datetime.datetime.now().timestamp()
+    
+    trades_history['result']['trades'][str(datetime.datetime.now().timestamp())] = last_trade
+    with open('tradeshistory.json','w') as f:
+        json.dump(trades_history, f, indent = 4)
+        fake_update_balance(pair, dollar_amount, close_, True)
 
 
 
