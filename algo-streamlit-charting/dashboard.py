@@ -20,4 +20,5 @@ def relativeret(df):
 if len(dropdown) > 0:
     #df = yf.download(dropdown, start, end)['Adj Close']
     df = relativeret(yf.download(dropdown, start, end)['Adj Close'])
+    st.header('Returns of {}'.format(dropdown))
     st.line_chart(df)
