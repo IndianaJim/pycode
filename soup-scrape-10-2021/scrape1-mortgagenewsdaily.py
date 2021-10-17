@@ -15,4 +15,4 @@ soup = BeautifulSoup(html, 'html.parser')
 
 ThirtyYearRate = soup.find('td', {'class' : 'RateListItem rate current'}) 
 print(ThirtyYearRate.text)
-
+print(ThirtyYearRate)
