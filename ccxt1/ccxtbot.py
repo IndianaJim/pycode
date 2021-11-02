@@ -1,4 +1,5 @@
 import ccxt
+from time import sleep
 
 def style(s, style):
     return style + s + '\033[0m'
@@ -44,17 +45,22 @@ exchanges = ccxt.exchanges
 exchange = ccxt.coinbasepro()
 
 symbol = 'BTC/USD'
-ticker = exchange.fetch_ticker(symbol.upper())
-print(ticker)
-dump(
-    green(exchange.id),
-    yellow(symbol),
-    'ticker',
-    ticker['datetime'],
-    'high: ' + str(ticker['high']),
-    'low: ' + str(ticker['low']),
-    'bid: ' + str(ticker['bid']),
-    'ask: ' + str(ticker['ask']),
-    'volume: ' + str(ticker['quoteVolume']))
+
+counter = 0
+while counter < 20:
+    ticker = exchange.fetch_ticker(symbol.upper())
+    #print(ticker)
+    dump(
+        green(exchange.id),
+        yellow(symbol),
+        'ticker',
+        ticker['datetime'],
+        'last: ' + str(ticker['last']),
+        'low: ' + str(ticker['low']),
+        'bid: ' + str(ticker['bid']),
+        'ask: ' + str(ticker['ask']),
+        'volume: ' + str(ticker['quoteVolume']))
+    sleep(5)
+    counter += 1
 
 
